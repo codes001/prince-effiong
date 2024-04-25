@@ -40,7 +40,7 @@ body:has(.card[data-color='green']:hover) {
   }
 
   .input {
-    @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+    @apply bg-gray-200 border border-none text-white/80 text-sm rounded-lg focus-visible:ring-blue-500 focus-visible:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
   }
 
   .textarea {
@@ -80,6 +80,10 @@ body:has(.card[data-color='green']:hover) {
   }
 }
 
+input:focus,
+textarea:focus {
+  outline: none;
+}
 .glassmorphism {
   background: rgba(45, 141, 252, 0.07);
   backdrop-filter: blur(10px);

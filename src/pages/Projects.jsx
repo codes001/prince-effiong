@@ -41,7 +41,7 @@ const Projects = () => {
                 alt={project.name}
                 className='w-full flex-1 !h-40 sm:h-64 object-cover mb-4'
               />
-              <div className='p-2'>
+              <div className='p-6'>
                 <h4 className='text-2xl text-slate-300 font-poppins font-semibold'>
                   {project.name}
                 </h4>
