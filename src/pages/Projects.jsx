@@ -1,25 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { CTA } from "../components";
-import { projects } from "../constants";
-import { arrow } from "../assets/icons";
+import { CTA } from '../components';
+import { projects } from '../constants';
+import { arrow } from '../assets/icons';
 
 const Projects = () => {
   return (
     <section className='max-container'>
       <h1 className='head-text'>
-        My{" "}
+        My{' '}
         <span className='blue-gradient_text drop-shadow font-semibold'>
           Projects
         </span>
       </h1>
 
-      <p className='text-slate-500 mt-2 leading-relaxed'>
-        I've embarked on numerous projects throughout the years, but these are
-        the ones I hold closest to my heart. Many of them are open-source, so if
-        you come across something that piques your interest, feel free to
-        explore the codebase and contribute your ideas for further enhancements.
-        Your collaboration is highly valued!
+      <p className='text-slate-300 mt-2 leading-relaxed'>
+        I've honed my skills in web development to provide innovative solutions
+        for individuals and businesses alike. My journey in the world of coding
+        began with a simple fascination for turning lines of code into visually
+        appealing, user-friendly websites, and it has since evolved into a
+        commitment to delivering high-quality, custom web solutions tailored to
+        your unique needs. Whether you're starting from scratch or looking to
+        revamp your existing web presence, I'm here to turn your ideas into
+        reality. Let's embark on a journey to create a website that not only
+        meets your expectations but surpasses them.
+        <br />
+        Feel free to explore my portfolio to see examples of my work, and don't
+        hesitate to reach out.
       </p>
 
       <div className='flex flex-wrap my-20 gap-16'>
@@ -27,13 +34,6 @@ const Projects = () => {
           <div className='lg:w-[400px] w-full' key={project.name}>
             <div className='block-container w-12 h-12'>
               <div className={`btn-back rounded-xl ${project.theme}`} />
-              <div className='btn-front rounded-xl flex justify-center items-center'>
-                <img
-                  src={project.iconUrl}
-                  alt='threads'
-                  className='w-1/2 h-1/2 object-contain'
-                />
-              </div>
             </div>
 
             <div className='mt-5 flex flex-col'>

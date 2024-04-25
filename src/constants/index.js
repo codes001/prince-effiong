@@ -157,7 +157,6 @@ export const socialLinks = [
 
 export const projects = [
   {
-    iconUrl: pricewise,
     theme: 'btn-back-red',
     name: 'Amazon Price Tracker',
     description:
