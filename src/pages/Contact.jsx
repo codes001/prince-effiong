@@ -7,71 +7,75 @@ import { Alert, Loader } from '../components';
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const { alert, showAlert, hideAlert } = useAlert();
+  // const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const [error, setError] = useState('');
+
   const [loading, setLoading] = useState(false);
 
-  const handleChange = ({ target: { name, value } }) => {
-    setForm({ ...form, [name]: value });
-  };
+  // const handleChange = ({ target: { name, value } }) => {
+  //   setForm({ ...form, [name]: value });
+  // };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs
-      .send(
+    //RESPONSE VALUES
+    const newRes = {
+      name,
+      email,
+      message,
+    };
+
+    //SET RESPONSE TO LOCAL STORAGE
+    sessionStorage.setItem('response', JSON.stringify(newRes));
+
+    console.log('Form submission', newRes);
+
+    try {
+      //CLIENT SIDE VALIDATION
+      if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+        setError('All fields are required');
+      }
+
+      //EMAILJS FUNCTIONALITY
+      const sendMessage = await emailjs.send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
-          from_name: form.name,
+          from_name: name,
           to_name: 'Effiong Prince',
-          from_email: form.email,
+          from_email: email,
           to_email: 'prybertocode@gmail.com',
-          message: form.message,
+          message: message,
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          showAlert({
-            show: true,
-            text: 'Thank you for your message',
-            type: 'success',
-          });
-
-          setTimeout(() => {
-            hideAlert(false);
-            setCurrentAnimation('idle');
-            setForm({
-              name: '',
-              email: '',
-              message: '',
-            });
-          }, [3000]);
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-          setCurrentAnimation('idle');
-
-          showAlert({
-            show: true,
-            text: 'Failed to send',
-            type: 'danger',
-          });
-        }
       );
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+
+        setName('');
+        setEmail('');
+        setMessage('');
+      }, 2000);
+    }
   };
 
   return (
     <section className='relative flex lg:flex-row flex-col max-container'>
-      {/* {alert.show && <Alert {...alert} />} */}
-
       <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Get in Touch</h1>
+        <h1 className='head-text blue-gradient_text'>Get in Touch</h1>
 
+        <h3>{error}</h3>
         <form
           ref={formRef}
           onSubmit={handleSubmit}
@@ -84,9 +88,8 @@ const Contact = () => {
               name='name'
               className='input'
               placeholder='Enter your name'
-              required
-              value={form.name}
-              onChange={handleChange}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
           <label className='text-slate-300 font-semibold'>
@@ -96,9 +99,8 @@ const Contact = () => {
               name='email'
               className='input'
               placeholder='Enter your email address'
-              required
-              value={form.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label className='text-slate-300 font-semibold'>
@@ -108,8 +110,8 @@ const Contact = () => {
               rows='4'
               className='textarea'
               placeholder='Drop your message'
-              value={form.message}
-              onChange={handleChange}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </label>
 
