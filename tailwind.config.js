@@ -9,7 +9,7 @@ export default {
         },
         black: {
           DEFAULT: '#000',
-          500: '#222831',
+          500: '#000205',
         },
         blue: {
           1: '#76ABAE',
