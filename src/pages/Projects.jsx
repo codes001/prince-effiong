@@ -29,23 +29,35 @@ const Projects = () => {
         hesitate to reach out.
       </p>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 my-20 gap-16'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 my-20 gap-8'>
         {projects.map((project) => (
-          <div className='lg:w-[400px] w-full' key={project.name}>
-            <div className='mt-5 flex flex-col'>
-              <h4 className='text-2xl text-slate-300 font-poppins font-semibold'>
-                {project.name}
-              </h4>
-              <p className='mt-2 text-slate-400'>{project.description}</p>
-              <div className='mt-5 flex items-center gap-2 font-poppins'>
-                <Link
-                  to={project.link}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='font-semibold btn !w-max text-blue-600'
-                >
-                  Demo
-                </Link>
+          <div
+            className='lg:w-[400px] h-max pb-6 w-full bg-black/20 rounded'
+            key={project.name}
+          >
+            <div className=' flex flex-col'>
+              <img
+                src={project.img}
+                alt={project.name}
+                className='w-full flex-1 !h-40 sm:h-64 object-cover mb-4'
+              />
+              <div className='p-2'>
+                <h4 className='text-2xl text-slate-300 font-poppins font-semibold'>
+                  {project.name}
+                </h4>
+                <p className='mt-2 text-slate-400 text-justify'>
+                  {project.description}
+                </p>
+                <div className='mt-5 flex items-center gap-2 font-poppins'>
+                  <Link
+                    to={project.link}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='font-semibold btn !w-max text-blue-600'
+                  >
+                    Demo
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

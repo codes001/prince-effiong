@@ -26,6 +26,9 @@ import {
   typescript,
 } from '../assets/icons';
 
+import hero from '../assets/images/hero.jpg';
+
+//STACK
 export const skills = [
   {
     imageUrl: express,
@@ -96,6 +99,7 @@ export const skills = [
   },
 ];
 
+// EXPERIENCE
 export const experiences = [
   {
     title: 'Frontend Developer',
@@ -137,6 +141,7 @@ export const experiences = [
   },
 ];
 
+//SOCIALS
 export const socialLinks = [
   {
     name: 'GitHub',
@@ -157,33 +162,42 @@ export const socialLinks = [
 
 export const projects = [
   {
+    img: hero,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',
     link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    name: 'Full Stack Threads Clone',
+    img: hero,
+    name: 'Yoom',
     description:
-      'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-    link: 'https://github.com/adrianhajdin/threads',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    name: 'Car Finding App',
+    img: hero,
+    name: 'Yoom',
     description:
-      'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
-    link: 'https://github.com/adrianhajdin/project_next13_car_showcase',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    name: 'Full Stack Instagram Clone',
+    img: hero,
+    name: 'Yoom',
     description:
-      'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-    link: 'https://github.com/adrianhajdin/social_media_app',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    name: 'Real-Estate Application',
+    img: hero,
+    name: 'Yoom',
     description:
-      'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-    link: 'https://github.com/adrianhajdin/projects_realestate',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
 ];
