@@ -17,9 +17,10 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  // const handleChange = ({ target: { name, value } }) => {
-  //   setForm({ ...form, [name]: value });
-  // };
+  const validateEmail = (inputEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(inputEmail);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +41,19 @@ const Contact = () => {
     try {
       //CLIENT SIDE VALIDATION
       if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-        setError('All fields are required');
+        setError('* All fields are required');
+        setTimeout(() => {
+          setError('');
+        }, 3000);
+
+        return;
+      }
+      if (!validateEmail(email)) {
+        setError('Invalid email address');
+        setTimeout(() => {
+          setError('');
+        }, 3000);
+        return;
       }
 
       //EMAILJS FUNCTIONALITY
@@ -75,12 +88,12 @@ const Contact = () => {
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text blue-gradient_text'>Get in Touch</h1>
 
-        <h3>{error}</h3>
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           className='w-full flex flex-col gap-7 mt-14'
         >
+          <h3 className='font-bold text-white'>{error}</h3>
           <label className='text-slate-300 font-semibold'>
             Name
             <input
@@ -115,7 +128,11 @@ const Contact = () => {
             />
           </label>
 
-          <button type='submit' disabled={loading} className='btn'>
+          <button
+            type='submit'
+            disabled={loading}
+            className='btn text-lg sm:text-xl uppercase'
+          >
             {loading ? 'Submitting...' : 'Submit'}
           </button>
         </form>
