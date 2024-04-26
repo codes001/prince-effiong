@@ -1,9 +1,7 @@
 import emailjs from '@emailjs/browser';
-// import { Canvas } from '@react-three/fiber';
 import { useRef, useState } from 'react';
-
-import useAlert from '../hooks/useAlert';
-import { Alert, Loader } from '../components';
+import hero from '../assets/images/hero.jpg';
+import { Loader } from '../components';
 
 const Contact = () => {
   const formRef = useRef();
@@ -84,7 +82,7 @@ const Contact = () => {
   };
 
   return (
-    <section className='relative flex lg:flex-row flex-col max-container'>
+    <section className='relative flex gap-8 lg:flex-row flex-col max-container'>
       <div className='flex-1 min-w-[50%] flex flex-col'>
         <h1 className='head-text blue-gradient_text'>Get in Touch</h1>
 
@@ -138,8 +136,8 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
-        Hello
+      <div className='lg:w-1/2 grid place-items-center w-full '>
+        <img src={hero} alt='' className='!size-full translate-y-[40%]' />
       </div>
     </section>
   );

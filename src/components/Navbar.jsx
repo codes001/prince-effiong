@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <header className='header'>
       <NavLink to='/'>
-        <p className='font-extrabold text-white text-3xl border-slate-300 border-solid'>
+        <p className='font-extrabold text-white text-3xl border-slate-300 border-solid border px-8 py-1.5'>
           P.E
         </p>
       </NavLink>
