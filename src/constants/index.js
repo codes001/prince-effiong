@@ -26,6 +26,9 @@ import {
   typescript,
 } from '../assets/icons';
 
+import yoom from '../assets/images/yoom.png';
+
+//STACK
 export const skills = [
   {
     imageUrl: express,
@@ -96,6 +99,7 @@ export const skills = [
   },
 ];
 
+// EXPERIENCE
 export const experiences = [
   {
     title: 'Frontend Developer',
@@ -137,6 +141,7 @@ export const experiences = [
   },
 ];
 
+//SOCIALS
 export const socialLinks = [
   {
     name: 'GitHub',
@@ -151,57 +156,59 @@ export const socialLinks = [
   {
     name: 'Twitter',
     iconUrl: twitter,
-    link: 'https://www.twitter.com/in/_effiong_prince',
+    link: 'https://www.twitter.com/_effiong_prince',
+  },
+
+  {
+    name: 'Mail',
+    iconUrl: twitter,
+    link: 'mailto:prybertocode@gmail.com',
+  },
+  {
+    name: 'Upwork',
+    iconUrl: twitter,
+    link: 'https://www.upwork.com/freelancers/~017ba85aa61e24be0f',
   },
 ];
 
 export const projects = [
   {
-    iconUrl: pricewise,
-    theme: 'btn-back-red',
-    name: 'Amazon Price Tracker',
+    img: yoom,
+    name: 'Yoom',
     description:
-      'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-    link: 'https://github.com/adrianhajdin/pricewise',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    iconUrl: threads,
-    theme: 'btn-back-green',
-    name: 'Full Stack Threads Clone',
+    img: yoom,
+    name: 'Yoom',
     description:
-      'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-    link: 'https://github.com/adrianhajdin/threads',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    iconUrl: car,
-    theme: 'btn-back-blue',
-    name: 'Car Finding App',
+    img: yoom,
+    name: 'Yoom',
     description:
-      'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
-    link: 'https://github.com/adrianhajdin/project_next13_car_showcase',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    iconUrl: snapgram,
-    theme: 'btn-back-pink',
-    name: 'Full Stack Instagram Clone',
+    img: yoom,
+    name: 'Yoom',
     description:
-      'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-    link: 'https://github.com/adrianhajdin/social_media_app',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
+
   {
-    iconUrl: estate,
-    theme: 'btn-back-black',
-    name: 'Real-Estate Application',
+    img: yoom,
+    name: 'Yoom',
     description:
-      'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-    link: 'https://github.com/adrianhajdin/projects_realestate',
-  },
-  {
-    iconUrl: summiz,
-    theme: 'btn-back-yellow',
-    name: 'AI Summarizer Application',
-    description:
-      'App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.',
-    link: 'https://github.com/adrianhajdin/project_ai_summarizer',
+      'Developed a web application that helps in easy call(video and audio streaming)',
+    link: 'https://yoom-main.vercel.app/',
   },
 ];

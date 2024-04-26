@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const CTA = () => {
   return (
     <section className='cta'>
-      <p className='cta-text'>
+      <p className='cta-text !text-slate-300'>
         Have a project in mind? <br className='sm:block hidden' />
         Let’s build something together!
       </p>

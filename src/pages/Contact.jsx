@@ -1,169 +1,155 @@
 import emailjs from '@emailjs/browser';
-import { Canvas } from '@react-three/fiber';
-import { Suspense, useRef, useState } from 'react';
-
-import useAlert from '../hooks/useAlert';
-import { Alert, Loader } from '../components';
+import { useRef, useState } from 'react';
+import hero from '../assets/images/hero.jpg';
+import { Loader } from '../components';
+import { socialLinks } from '../constants';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const { alert, showAlert, hideAlert } = useAlert();
-  const [loading, setLoading] = useState(false);
-  const [currentAnimation, setCurrentAnimation] = useState('idle');
 
-  const handleChange = ({ target: { name, value } }) => {
-    setForm({ ...form, [name]: value });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const [error, setError] = useState('');
+
+  const [loading, setLoading] = useState(false);
+
+  const validateEmail = (inputEmail) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(inputEmail);
   };
 
-  const handleFocus = () => setCurrentAnimation('walk');
-  const handleBlur = () => setCurrentAnimation('idle');
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setCurrentAnimation('hit');
 
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: 'JavaScript Mastery',
-          from_email: form.email,
-          to_email: 'sujata@jsmastery.pro',
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          showAlert({
-            show: true,
-            text: 'Thank you for your message',
-            type: 'success',
-          });
+    //RESPONSE VALUES
+    const newRes = {
+      name,
+      email,
+      message,
+    };
 
+    //CLIENT SIDE VALIDATION
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+      setError('* All fields are required');
+      setTimeout(() => {
+        setError('');
+      }, 3000);
+
+      return;
+    } else {
+      //SET RESPONSE TO LOCAL STORAGE
+      sessionStorage.setItem('response', JSON.stringify(newRes));
+
+      console.log('Form submission', newRes);
+
+      try {
+        if (!validateEmail(email)) {
+          setError('* Invalid email address');
           setTimeout(() => {
-            hideAlert(false);
-            setCurrentAnimation('idle');
-            setForm({
-              name: '',
-              email: '',
-              message: '',
-            });
-          }, [3000]);
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-          setCurrentAnimation('idle');
-
-          showAlert({
-            show: true,
-            text: 'Failed to send',
-            type: 'danger',
-          });
+            setError('');
+          }, 3000);
+          return;
         }
-      );
+        setLoading(true);
+
+        //EMAILJS FUNCTIONALITY
+        const sendMessage = await emailjs.send(
+          import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+          {
+            from_name: name,
+            to_name: 'Effiong Prince',
+            from_email: email,
+            to_email: 'prybertocode@gmail.com',
+            message: message,
+          },
+          import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+
+          setName('');
+          setEmail('');
+          setMessage('');
+        }, 2000);
+      }
+    }
   };
 
   return (
-    <section className='relative flex lg:flex-row flex-col max-container'>
-      {alert.show && <Alert {...alert} />}
-
+    <section className='relative flex gap-8 lg:flex-row flex-col max-container'>
       <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text'>Get in Touch</h1>
+        <h1 className='head-text !-mb-4 blue-gradient_text'>Get in Touch</h1>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           className='w-full flex flex-col gap-7 mt-14'
         >
-          <label className='text-black-500 font-semibold'>
+          <h3 className='font-bold text-red-500'>{error}</h3>
+          <label className='text-slate-300 font-semibold'>
             Name
             <input
               type='text'
               name='name'
               className='input'
               placeholder='Enter your name'
-              required
-              value={form.name}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className='text-slate-300 font-semibold'>
             Email
             <input
               type='email'
               name='email'
               className='input'
               placeholder='Enter your email address'
-              required
-              value={form.email}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-          <label className='text-black-500 font-semibold'>
+          <label className='text-slate-300 font-semibold'>
             Your Message
             <textarea
               name='message'
               rows='4'
               className='textarea'
               placeholder='Drop your message'
-              value={form.message}
-              onChange={handleChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </label>
 
           <button
             type='submit'
             disabled={loading}
-            className='btn'
-            onFocus={handleFocus}
-            onBlur={handleBlur}
+            className='btn text-lg sm:text-xl uppercase'
           >
             {loading ? 'Submitting...' : 'Submit'}
           </button>
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
-        <Canvas
-          camera={{
-            position: [0, 0, 5],
-            fov: 75,
-            near: 0.1,
-            far: 1000,
-          }}
-        >
-          <directionalLight position={[0, 0, 1]} intensity={2.5} />
-          <ambientLight intensity={1} />
-          <pointLight position={[5, 10, 0]} intensity={2} />
-          <spotLight
-            position={[10, 10, 10]}
-            angle={0.15}
-            penumbra={1}
-            intensity={2}
-          />
-
-          <Suspense fallback={<Loader />}>
-            <Fox
-              currentAnimation={currentAnimation}
-              position={[0.5, 0.35, 0]}
-              rotation={[12.629, -0.6, 0]}
-              scale={[0.5, 0.5, 0.5]}
-            />
-          </Suspense>
-        </Canvas>
+      <div className='lg:w-1/2 grid gap-2 py-6 px-3 place-items-center w-full border border-blue-500'>
+        {socialLinks.map((link, index) => (
+          <div
+            key={link.name}
+            className='bg-gray-200 cursor-pointer text-slate-300 w-full text-center py-6 px-4 rounded-md font-bold uppercase text-lg transition-all duration-150 hover:bg-gray-700'
+          >
+            <Link to={link.link} target='_blank'>
+              {/* I'll get react-icons for the icon */}
+              {/* {link.iconUrl} */}
+              {link.name}
+            </Link>
+          </div>
+        ))}
       </div>
     </section>
   );

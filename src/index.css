@@ -10,7 +10,8 @@
 }
 
 body {
-  font-family: 'Work Sans', sans-serif;
+  /* font-family: 'Work Sans', sans-serif; */
+  font-family: 'Poppins', sans-serif;
 }
 
 body:has(.card[data-color='blue']:hover) {
@@ -39,19 +40,19 @@ body:has(.card[data-color='green']:hover) {
   }
 
   .input {
-    @apply bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mt-2.5 font-normal shadow-card;
+    @apply bg-gray-200 border border-none py-3 text-white/80 text-sm rounded-lg focus-visible:ring-blue-500 focus:border-blue-500  block w-full p-2.5 mt-2.5 font-normal shadow-card;
   }
 
   .textarea {
-    @apply block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500 mt-2.5 font-normal shadow-card;
+    @apply block p-2.5 w-full text-sm text-white/80 bg-gray-200 rounded-lg border border-gray-200 focus:ring-blue-500  h-[150px] focus:border-blue-500 mt-2.5 font-normal resize-none shadow-card;
   }
 
   .btn {
-    @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center;
+    @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff]  focus:outline-none  rounded font-semibold text-sm w-full sm:w-auto px-5 py-3.5 text-center;
   }
 
   .header {
-    @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
+    @apply flex justify-between items-center  sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
   }
 
   .footer {
@@ -59,7 +60,7 @@ body:has(.card[data-color='green']:hover) {
   }
 
   .footer-container {
-    @apply flex flex-wrap gap-7 items-center justify-between;
+    @apply flex flex-wrap gap-7 items-center justify-center;
   }
 
   .info-box {
@@ -79,19 +80,17 @@ body:has(.card[data-color='green']:hover) {
   }
 }
 
+input:focus,
+textarea:focus {
+  border: solid 1px rgb(59 130 246);
+  outline: none;
+}
 .glassmorphism {
   background: rgba(45, 141, 252, 0.07);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-.logo {
-  border-radius: 8.889px;
-  background: #fff;
-  box-shadow: 0px 10px 35px -4px rgba(67, 83, 255, 0.15),
-    0px 1.5px 4px -1px rgba(67, 83, 255, 0.2);
 }
 
 .block-container {
@@ -111,7 +110,7 @@ body:has(.card[data-color='green']:hover) {
   transform-origin: bottom right;
   transform: rotateZ(10deg);
   will-change: transform;
-  box-shadow: 10px 0 30px #31363f;
+  box-shadow: 10px 0 30px #464950;
 }
 
 .block-container .btn-back-red {
@@ -163,6 +162,10 @@ body:has(.card[data-color='green']:hover) {
 
 .block-container:hover > .btn-front {
   transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+}
+
+#hero {
+  background: url('../src/assets/images/hero.jpg') no-repeat center center/cover;
 }
 
 /* Neo Brutalism */
