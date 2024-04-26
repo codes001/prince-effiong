@@ -22,7 +22,6 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     //RESPONSE VALUES
     const newRes = {
@@ -31,53 +30,54 @@ const Contact = () => {
       message,
     };
 
-    //SET RESPONSE TO LOCAL STORAGE
-    sessionStorage.setItem('response', JSON.stringify(newRes));
-
-    console.log('Form submission', newRes);
-
-    try {
-      //CLIENT SIDE VALIDATION
-      if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-        setError('* All fields are required');
-        setTimeout(() => {
-          setError('');
-        }, 3000);
-
-        return;
-      }
-      if (!validateEmail(email)) {
-        setError('Invalid email address');
-        setTimeout(() => {
-          setError('');
-        }, 3000);
-        return;
-      }
-
-      //EMAILJS FUNCTIONALITY
-      const sendMessage = await emailjs.send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: name,
-          to_name: 'Effiong Prince',
-          from_email: email,
-          to_email: 'prybertocode@gmail.com',
-          message: message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      );
-    } catch (error) {
-      setLoading(false);
-      console.error(error);
-    } finally {
+    //CLIENT SIDE VALIDATION
+    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+      setError('* All fields are required');
       setTimeout(() => {
-        setLoading(false);
+        setError('');
+      }, 3000);
 
-        setName('');
-        setEmail('');
-        setMessage('');
-      }, 2000);
+      return;
+    } else {
+      //SET RESPONSE TO LOCAL STORAGE
+      sessionStorage.setItem('response', JSON.stringify(newRes));
+
+      console.log('Form submission', newRes);
+
+      try {
+        // if (!validateEmail(email)) {
+        //   setError('Invalid email address');
+        //   setTimeout(() => {
+        //     setError('');
+        //   }, 3000);
+        //   return;
+        // }
+        setLoading(true);
+
+        //EMAILJS FUNCTIONALITY
+        const sendMessage = await emailjs.send(
+          import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+          {
+            from_name: name,
+            to_name: 'Effiong Prince',
+            from_email: email,
+            to_email: 'prybertocode@gmail.com',
+            message: message,
+          },
+          import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+
+          setName('');
+          setEmail('');
+          setMessage('');
+        }, 2000);
+      }
     }
   };
 
