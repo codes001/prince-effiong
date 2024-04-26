@@ -158,11 +158,7 @@ export const socialLinks = [
     iconUrl: twitter,
     link: 'https://www.twitter.com/_effiong_prince',
   },
-  {
-    name: 'Instagram',
-    iconUrl: twitter,
-    link: 'https://www.instagram.com/effiong_prince_',
-  },
+
   {
     name: 'Mail',
     iconUrl: twitter,

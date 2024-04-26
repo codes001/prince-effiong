@@ -137,7 +137,7 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 grid gap-4 py-8 px-3 place-items-center w-full border border-blue-500'>
+      <div className='lg:w-1/2 grid gap-2 py-6 px-3 place-items-center w-full border border-blue-500'>
         {socialLinks.map((link, index) => (
           <div
             key={link.name}
