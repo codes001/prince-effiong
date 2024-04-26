@@ -141,7 +141,7 @@ const Contact = () => {
         {socialLinks.map((link, index) => (
           <div
             key={link.name}
-            className='bg-gray-200 cursor-pointer text-slate-300 w-full text-center py-6 px-4 rounded-md font-bold uppercase text-lg '
+            className='bg-gray-200 cursor-pointer text-slate-300 w-full text-center py-6 px-4 rounded-md font-bold uppercase text-lg transition-all duration-150 hover:bg-gray-700'
           >
             <Link to={link.link} target='_blank'>
               {/* I'll get react-icons for the icon */}
