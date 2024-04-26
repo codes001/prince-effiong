@@ -26,7 +26,7 @@ import {
   typescript,
 } from '../assets/icons';
 
-import hero from '../assets/images/hero.jpg';
+import yoom from '../assets/images/yoom.png';
 
 //STACK
 export const skills = [
@@ -162,7 +162,7 @@ export const socialLinks = [
 
 export const projects = [
   {
-    img: hero,
+    img: yoom,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',
@@ -170,7 +170,7 @@ export const projects = [
   },
 
   {
-    img: hero,
+    img: yoom,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',
@@ -178,7 +178,7 @@ export const projects = [
   },
 
   {
-    img: hero,
+    img: yoom,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',
@@ -186,7 +186,7 @@ export const projects = [
   },
 
   {
-    img: hero,
+    img: yoom,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',
@@ -194,7 +194,7 @@ export const projects = [
   },
 
   {
-    img: hero,
+    img: yoom,
     name: 'Yoom',
     description:
       'Developed a web application that helps in easy call(video and audio streaming)',

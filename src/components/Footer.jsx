@@ -1,29 +1,15 @@
 import { Link } from 'react-router-dom';
 
-import { socialLinks } from '../constants';
-
 const Footer = () => {
   const date = new Date().getFullYear();
   return (
     <footer className='footer font-poppins'>
       <hr className='border-slate-200' />
 
-      <div className='text-white footer-container'>
+      <div className='text-white  text-center  footer-container'>
         <p>
           © {date} <strong>Prince Effiong</strong>. All rights reserved.
         </p>
-
-        <div className='flex gap-3 justify-center items-center'>
-          {socialLinks.map((link) => (
-            <Link key={link.name} to={link.link} target='_blank'>
-              <img
-                src={link.iconUrl}
-                alt={link.name}
-                className='w-6 h-6 object-contain'
-              />
-            </Link>
-          ))}
-        </div>
       </div>
     </footer>
   );

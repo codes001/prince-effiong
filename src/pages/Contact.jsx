@@ -5,7 +5,6 @@ import { Loader } from '../components';
 
 const Contact = () => {
   const formRef = useRef();
-  // const [form, setForm] = useState({ name: '', email: '', message: '' });
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -45,13 +44,13 @@ const Contact = () => {
       console.log('Form submission', newRes);
 
       try {
-        // if (!validateEmail(email)) {
-        //   setError('Invalid email address');
-        //   setTimeout(() => {
-        //     setError('');
-        //   }, 3000);
-        //   return;
-        // }
+        if (!validateEmail(email)) {
+          setError('* Invalid email address');
+          setTimeout(() => {
+            setError('');
+          }, 3000);
+          return;
+        }
         setLoading(true);
 
         //EMAILJS FUNCTIONALITY
@@ -84,14 +83,14 @@ const Contact = () => {
   return (
     <section className='relative flex gap-8 lg:flex-row flex-col max-container'>
       <div className='flex-1 min-w-[50%] flex flex-col'>
-        <h1 className='head-text blue-gradient_text'>Get in Touch</h1>
+        <h1 className='head-text !-mb-4 blue-gradient_text'>Get in Touch</h1>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
           className='w-full flex flex-col gap-7 mt-14'
         >
-          <h3 className='font-bold text-white'>{error}</h3>
+          <h3 className='font-bold text-red-500'>{error}</h3>
           <label className='text-slate-300 font-semibold'>
             Name
             <input
@@ -136,8 +135,8 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 grid place-items-center w-full '>
-        <img src={hero} alt='' className='!size-full translate-y-[40%]' />
+      <div className='lg:w-1/2 grid place-items-center w-full border border-slate-300'>
+        Hello world
       </div>
     </section>
   );

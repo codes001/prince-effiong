@@ -48,7 +48,7 @@ body:has(.card[data-color='green']:hover) {
   }
 
   .btn {
-    @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff] focus:ring-4 focus:outline-none focus:ring-blue-300 rounded font-semibold text-sm w-full sm:w-auto px-5 py-3.5 text-center;
+    @apply text-white bg-gradient-to-r from-[#00c6ff] to-[#0072ff]  focus:outline-none  rounded font-semibold text-sm w-full sm:w-auto px-5 py-3.5 text-center;
   }
 
   .header {
@@ -60,7 +60,7 @@ body:has(.card[data-color='green']:hover) {
   }
 
   .footer-container {
-    @apply flex flex-wrap gap-7 items-center justify-between;
+    @apply flex flex-wrap gap-7 items-center justify-center;
   }
 
   .info-box {
