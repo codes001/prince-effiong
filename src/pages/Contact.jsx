@@ -2,6 +2,8 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import hero from '../assets/images/hero.jpg';
 import { Loader } from '../components';
+import { socialLinks } from '../constants';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const formRef = useRef();
@@ -135,8 +137,19 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 grid place-items-center w-full border border-slate-300'>
-        Hello world
+      <div className='lg:w-1/2 grid gap-4 py-8 px-3 place-items-center w-full border border-blue-500'>
+        {socialLinks.map((link, index) => (
+          <div
+            key={link.name}
+            className='bg-gray-200 cursor-pointer text-slate-300 w-full text-center py-6 px-4 rounded-md font-bold uppercase text-lg '
+          >
+            <Link to={link.link} target='_blank'>
+              {/* I'll get react-icons for the icon */}
+              {/* {link.iconUrl} */}
+              {link.name}
+            </Link>
+          </div>
+        ))}
       </div>
     </section>
   );

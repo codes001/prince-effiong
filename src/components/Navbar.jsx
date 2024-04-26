@@ -8,7 +8,7 @@ const Navbar = () => {
           P.E
         </p>
       </NavLink>
-      <nav className='flex text-md md:text-lg gap-7 uppercase font-medium'>
+      <nav className='flex text-md md:text-lg gap-5 uppercase font-bold'>
         <NavLink
           to='/about'
           className={({ isActive }) =>

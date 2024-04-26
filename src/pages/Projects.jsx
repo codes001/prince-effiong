@@ -14,7 +14,7 @@ const Projects = () => {
         </span>
       </h1>
 
-      <p className='text-slate-300 mt-2 leading-relaxed'>
+      <p className='text-slate-300 mt-2 leading-relaxed text-justify md:text-left'>
         I've honed my skills in web development to provide innovative solutions
         for individuals and businesses alike. My journey in the world of coding
         began with a simple fascination for turning lines of code into visually

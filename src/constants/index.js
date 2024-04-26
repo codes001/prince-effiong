@@ -156,7 +156,22 @@ export const socialLinks = [
   {
     name: 'Twitter',
     iconUrl: twitter,
-    link: 'https://www.twitter.com/in/_effiong_prince',
+    link: 'https://www.twitter.com/_effiong_prince',
+  },
+  {
+    name: 'Instagram',
+    iconUrl: twitter,
+    link: 'https://www.instagram.com/effiong_prince_',
+  },
+  {
+    name: 'Mail',
+    iconUrl: twitter,
+    link: 'mailto:prybertocode@gmail.com',
+  },
+  {
+    name: 'Upwork',
+    iconUrl: twitter,
+    link: 'https://www.upwork.com/freelancers/~017ba85aa61e24be0f',
   },
 ];
 
